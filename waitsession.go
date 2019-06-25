@@ -38,6 +38,12 @@ func (ws *WaitSession) Done(sess interface{}, data interface{}) error {
 	return fmt.Errorf("session %v not exist", sess)
 }
 
+// func (ws *WaitSession) removeSession(sess interface{}) {
+// 	ws.Lock()
+// 	delete(ws.sessions, sess)
+// 	ws.Unlock()
+// }
+
 func (ws *WaitSession) Wait(sess interface{}, timeout time.Duration) (interface{}, error) {
 	ws.Lock()
 	done, ok := ws.sessions[sess]
